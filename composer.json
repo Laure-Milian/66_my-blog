@@ -1,0 +1,12 @@
+{
+    "name": "simplon/67_my-blog",
+    "authors": [
+        {
+            "name": "Laure",
+            "email": "laure.milian@gmail.com"
+        }
+    ],
+    "require": {
+        "j4mie/idiorm": "^1.5"
+    }
+}
