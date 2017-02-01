@@ -2,6 +2,7 @@
 
 Class FormController {
 
+	private $id;
 	private $title = "";
 	private $author = "";
 	private $content = "";
@@ -10,7 +11,7 @@ Class FormController {
 		if (isset($_GET['id'])) {
 			$this->edit();
 		} 
-		elseif ($_GET['title']){
+		elseif (isset($_GET['title'])){
 			$this->correct();
 		}
 	}
@@ -21,8 +22,8 @@ Class FormController {
 	}
 
 	public function edit() {
-		$id = $_GET['id'];
-		$selectedPost = ORM::for_table('posts')->where('id', $id)->find_one();
+		$this->id = $_GET['id'];
+		$selectedPost = ORM::for_table('posts')->where('id', $this->id)->find_one();
 		$this->title = $selectedPost->title;
 		$this->author = $selectedPost->author;
 		$this->content = $selectedPost->content;		
@@ -31,22 +32,23 @@ Class FormController {
 	public function correct() {
 		if ($_GET['title'] === "missing") {
 			echo "<div> Merci de renseigner le titre de l'article </div>";
-			$this->title = "";
 		} else {
 			$this->title = $_GET['title'];
 		}
 		if ($_GET['author'] === "missing") {
 			echo "<div> Merci de renseigner l'auteur de l'article </div>";
-			$this->author = "";
 		} else {
 			$this->author = $_GET['author'];
 		}
 		if ($_GET['content'] === "missing") {
 			echo "<div> Merci de renseigner le contenu de l'article </div>";
-			$this->content = "";
 		} else {
 			$this->content = $_GET['content'];
 		}
+	}
+
+	public function getId() {
+		return $this->id;	
 	}
 
 	public function getTitle() {

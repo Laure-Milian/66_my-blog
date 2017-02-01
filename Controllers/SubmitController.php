@@ -34,8 +34,11 @@
 				$this->author === 'missing' ||
 				$this->content === 'missing') {
 				$this->redirectForm();
+			} elseif ($_POST["id"]) {
+				$id = $_POST["id"];
+				$this->editPost($id);
 			} else {
-				$this->redirectHome();
+				$this->createPost();
 			}
 		}
 
@@ -49,7 +52,7 @@
 			die();
 		}
 
-		public function redirectHome() {
+		public function createPost() {
 			$newPost = ORM::for_table('posts')->create();
 			$newPost->title = $this->title;
 			$newPost->author = $this->author;
@@ -57,8 +60,21 @@
 			$date = new DateTime();
 			$newPost->created_at = $date->format('Y-m-d H:i:s');
 			$newPost->save();
+			$this->redirectHome();
+		}
+
+		public function editPost($id) {
+			$editedPost = ORM::for_table('posts')->where('id', $id)->find_one();
+			$editedPost->set('title', $this->title);
+			$editedPost->set('author', $this->author);
+			$editedPost->set('content', $this->content);			
+			$editedPost->save();
+			$this->redirectHome();
+		}
+
+		public function redirectHome() {
 			header('Location: /index.php');
 			die();
 		}
-
 	}
+
