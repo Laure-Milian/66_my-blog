@@ -46,6 +46,13 @@
 		}
 
 		public function redirectHome() {
+			$newPost = ORM::for_table('posts')->create();
+			$newPost->title = $this->title;
+			$newPost->author = $this->author;
+			$newPost->content = $this->content;
+			$date = new DateTime();
+			$newPost->created_at = $date->format('Y-m-d H:i:s');
+			$newPost->save();
 			header('Location: /index.php');
 			die();
 		}
