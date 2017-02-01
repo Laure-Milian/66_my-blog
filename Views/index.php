@@ -11,9 +11,12 @@
 		<h1>Mon blog</h1>
 		<?php foreach ($posts as $post) : ?>
 			<div>
-				<h2><?= $post->title ?></h2>
-				<div><?= $post->content ?></div>
-				<div><?= $post->author ?>, le <?= $post->created_at ?></div>
+				<h2><?= $post->title; ?></h2>
+				<div><?= $post->content; ?></div>
+				<div><?= $post->author; ?>, le <?= $post->created_at; ?></div>
+				<a href="index.php?page=form&id=<?= $post->id ?>">
+					<button>Editer</button>
+				</a>
 			</div>
 		<?php endforeach; ?>
 		<div>

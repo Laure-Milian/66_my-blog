@@ -1,12 +1,16 @@
 <?php
 	
-	Class PostController {
+	Class SubmitController {
 
 		private $title;
 		private $author;
 		private $content;
 
 		public function __construct() {
+			$this->checkIfEmpty();
+		}
+
+		public function checkIfEmpty() {
 			if (empty($_POST["title"])) {
 				$this->title = 'missing';
 			} else {
