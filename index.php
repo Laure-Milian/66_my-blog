@@ -2,6 +2,7 @@
 define('BASEPATH', __DIR__);
 require BASEPATH . '/Controllers/SubmitController.php';
 require BASEPATH . '/Controllers/FormController.php';
+require BASEPATH . '/Controllers/CommentController.php';
 
 require BASEPATH . '/vendor/autoload.php';
 ORM::configure('mysql:host=localhost;dbname=my_blog');
@@ -20,4 +21,6 @@ elseif ($_GET["page"] === "form") {
 elseif ($_GET["page"] === "submit") {
 	(new SubmitController);
 }
-?>
+elseif ($_GET["page"] === "comment") {
+	(new CommentController)->comment();
+}

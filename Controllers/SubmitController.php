@@ -14,17 +14,17 @@
 			if (empty($_POST["title"])) {
 				$this->title = 'missing';
 			} else {
-				$this->title = $_POST["title"];
+				$this->title = htmlspecialchars($_POST["title"]);
 			}
 			if (empty($_POST["author"])) {
 				$this->author = 'missing';
 			} else {
-				$this->author = $_POST["author"];
+				$this->author = htmlspecialchars($_POST["author"]);
 			}
 			if (empty($_POST["content"])) {
 				$this->content = 'missing';
 			} else {
-				$this->content = $_POST["content"];
+				$this->content = htmlspecialchars($_POST["content"]);
 			}
 			$this->chooseRedirect();
 		}

@@ -18,6 +18,28 @@
 					<button>Editer</button>
 				</a>
 			</div>
+			<div>
+				<form action="/index.php?page=comment" method="post">
+					<div>
+						<input type="hidden" id="id_post" name="id_post" value="<?= $post->id; ?>">
+					</div>
+					<div>
+						<label for="author">Author</label>
+					</div>
+					<div>
+						<input type="text" id="author" name="author">
+					</div>
+					<div>
+						<label for="content">Content</label>
+					</div>
+					<div>
+						<textarea name="content" id="content" cols="30" rows="5"></textarea>
+					</div>
+					<div>
+						<input type="submit" value="Commenter">
+					</div>
+				</form>
+			</div>
 		<?php endforeach; ?>
 		<div>
 			<a href="/index.php?page=form">

@@ -33,17 +33,17 @@ Class FormController {
 		if ($_GET['title'] === "missing") {
 			echo "<div> Merci de renseigner le titre de l'article </div>";
 		} else {
-			$this->title = $_GET['title'];
+			$this->title = htmlspecialchars($_GET['title']);
 		}
 		if ($_GET['author'] === "missing") {
 			echo "<div> Merci de renseigner l'auteur de l'article </div>";
 		} else {
-			$this->author = $_GET['author'];
+			$this->author = htmlspecialchars($_GET['author']);
 		}
 		if ($_GET['content'] === "missing") {
 			echo "<div> Merci de renseigner le contenu de l'article </div>";
 		} else {
-			$this->content = $_GET['content'];
+			$this->content = htmlspecialchars($_GET['content']);
 		}
 	}
 
@@ -62,6 +62,7 @@ Class FormController {
 	public function getContent() {
 		return $this->content;	
 	}
+
 }
 
 
